@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h2 Sign Up
+
+    if errorMessage
+        .error#error-msg
+            strong Error: 
+               | #{errorMessage}
+
+    .signup-form
+        form(action='/api/signup' method='post')
+            dl
+                dt
+                    | Username:
+                dd
+                    input(type='text' name='username' size='30' value= username ? username : "" id='username')
+                dt
+                    | E-Mail:
+                dd
+                    input(type='text' name='email' size='30' value= email ? email : "" id='email')
+                dt
+                    | Password:
+                dd
+                    input(type='password' name='password' size='30' id='password')
+                dt
+                    | Password 
+                    small (repeat)
+                dd
+                    input(type='password' name='password2' size='30' id='password2')
+            .actions
+                input(type='submit' value='Sign Up' id='signup-btn')

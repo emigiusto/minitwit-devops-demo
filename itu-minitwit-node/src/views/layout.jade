@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title MiniTwit
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .page
+      h1 MiniTwit
+
+      .navigation
+        
+        if user
+          a(href="/api/") my timeline
+          |  |  
+          a(href="/api/public") public timeline
+          |  |  
+          a(href="/api/signout" id='sign-out') sign out [#{user.username}]
+        else
+          a(href="/api/") public timeline
+          |  |  
+          a(href="/api/signup") sign up
+          |  |  
+          a(href="/api/signin") sign in
+
+
+      if flash
+        ul.flashes
+          li #{flash}
+
+    
+      .body
+        block content  
+
+      .footer
+         MiniTwit — A NodeJS project
